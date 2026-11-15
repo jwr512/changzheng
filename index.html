@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>长征：一条地球上的红飘带 · 纪念中国工农红军长征胜利90周年</title>
+    <style>
+        /* ========== 基础重置 ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --red-deep: #7a0e0e;
+            --red-main: #a61b1b;
+            --red-warm: #c43a2a;
+            --gold: #c9a24b;
+            --gold-light: #e8d5a8;
+            --ivory: #fbf7f0;
+            --ink: #2b1e1a;
+            --gray-warm: #8a7a6e;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 72px;
+        }
+
+        body {
+            font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "SimSun", Georgia, serif;
+            background-color: var(--ivory);
+            color: var(--ink);
+            line-height: 1.9;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========== 顶部导航 ========== */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(122, 14, 14, 0.96);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--gold);
+            transition: box-shadow 0.3s;
+        }
+
+        .top-nav.scrolled {
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gold-light);
+            font-size: 1.05rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav-brand .star {
+            color: var(--gold);
+            font-size: 1.3rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 4px;
+            list-style: none;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .nav-links::-webkit-scrollbar { display: none; }
+
+        .nav-links a {
+            display: block;
+            padding: 8px 16px;
+            color: #f0e6d6;
+            text-decoration: none;
+            font-size: 0.92rem;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: background 0.25s, color 0.25s;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            background: rgba(201, 162, 75, 0.2);
+            color: var(--gold-light);
+        }
+
+        /* ========== 图片通用样式 ========== */
+        .img-responsive {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .img-frame {
+            border: 1px solid rgba(201, 162, 75, 0.4);
+            padding: 6px;
+            background: #fff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            margin-bottom: 24px;
+        }
+
+        .img-caption {
+            font-size: 0.85rem;
+            color: var(--gray-warm);
+            text-align: center;
+            margin-top: 12px;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+        
+        .img-caption span {
+            font-weight: 400;
+            font-size: 0.8rem;
+            color: #999;
+            display: block;
+            margin-top: 4px;
+            letter-spacing: 1px;
+        }
+
+        /* ========== 英雄区 ========== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            text-align: center;
+            padding: 120px 3vw 80px 1.5rem;
+            /* 使用《长征》作为背景，叠加红色渐变保证文字清晰 */
+            background: 
+                linear-gradient(160deg, rgba(92, 8, 8, 0.85) 0%, rgba(138, 18, 18, 0.75) 40%, rgba(122, 14, 14, 0.9) 100%),
+                url('image/长征.png') center/cover no-repeat;
+            overflow: hidden;
+            background-attachment: fixed; /* 视差效果 */
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(to top, var(--ivory), transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 880px;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            color: var(--gold-light);
+            letter-spacing: 6px;
+            font-size: 0.82rem;
+            border: 1px solid rgba(201, 162, 75, 0.5);
+            padding: 6px 20px;
+            border-radius: 999px;
+            margin-bottom: 32px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 6vw, 4.6rem);
+            color: var(--gold-light);
+            letter-spacing: 6px;
+            line-height: 1.3;
+            font-weight: 700;
+            text-shadow: 0 2px 30px rgba(0, 0, 0, 0.6);
+            margin-bottom: 8px;
+        }
+
+        .hero h1 .accent {
+            display: block;
+            font-size: 0.42em;
+            letter-spacing: 10px;
+            color: rgba(232, 213, 168, 0.85);
+            margin-top: 18px;
+            font-weight: 400;
+        }
+
+        .hero-poem {
+            margin: 40px auto 36px;
+            max-width: 560px;
+            padding: 28px 32px;
+            border-top: 1px solid rgba(201, 162, 75, 0.35);
+            border-bottom: 1px solid rgba(201, 162, 75, 0.35);
+            color: rgba(251, 247, 240, 0.92);
+            font-size: 1rem;
+            line-height: 2.2;
+            letter-spacing: 2px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+
+        .hero-poem .poem-title {
+            color: var(--gold);
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 28px 48px;
+            margin-top: 20px;
+        }
+
+        .hero-stat { text-align: center; }
+
+        .hero-stat .num {
+            display: block;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .hero-stat .label {
+            display: block;
+            font-size: 0.78rem;
+            color: rgba(232, 213, 168, 0.8);
+            letter-spacing: 2px;
+            margin-top: 4px;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            color: rgba(232, 213, 168, 0.6);
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            animation: floatY 2.6s ease-in-out infinite;
+        }
+
+        @keyframes floatY {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-8px); }
+        }
+
+        /* ========== 通用区块 ========== */
+        .section { padding: 96px 24px; }
+        .section-inner { max-width: 1080px; margin: 0 auto; }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--red-warm);
+            font-size: 0.78rem;
+            letter-spacing: 5px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .section-label::before {
+            content: "";
+            width: 28px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .section-title {
+            font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+            color: var(--red-deep);
+            letter-spacing: 4px;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .section-intro {
+            max-width: 720px;
+            color: #5a4a40;
+            font-size: 1.02rem;
+            margin-bottom: 56px;
+            line-height: 2;
+        }
+
+        /* ========== 历史回廊 · 图文混排 ========== */
+        .history-top-img { margin-bottom: 48px; }
+
+        .timeline {
+            position: relative;
+            padding-left: 36px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 9px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), rgba(201, 162, 75, 0.15));
+        }
+
+        .tl-item {
+            position: relative;
+            margin-bottom: 44px;
+        }
+
+        .tl-item:last-child { margin-bottom: 0; }
+
+        .tl-item::before {
+            content: "";
+            position: absolute;
+            left: -31px;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--red-warm);
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 0 4px rgba(201, 162, 75, 0.12);
+        }
+
+        .tl-date {
+            display: inline-block;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: var(--red-warm);
+            background: rgba(196, 58, 42, 0.08);
+            padding: 2px 12px;
+            border-radius: 3px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .tl-item h3 {
+            font-size: 1.18rem;
+            color: var(--red-deep);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .tl-item p {
+            font-size: 0.95rem;
+            color: #5a4a40;
+            line-height: 1.95;
+            max-width: 760px;
+        }
+
+        .tl-highlight {
+            display: inline-block;
+            background: linear-gradient(to top, rgba(201, 162, 75, 0.25) 0%, transparent 60%);
+            padding: 0 2px;
+            color: var(--red-deep);
+            font-weight: 700;
+        }
+
+        .history-foot-img {
+            margin-top: 48px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        /* ========== 精神内核 ========== */
+        .spirit-section {
+            background:
+                linear-gradient(rgba(122, 14, 14, 0.94), rgba(90, 8, 8, 0.97)),
+                repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(201, 162, 75, 0.03) 40px, rgba(201, 162, 75, 0.03) 41px);
+            color: #f0e6d6;
+        }
+
+        .spirit-section .section-title { color: var(--gold-light); }
+        .spirit-section .section-label { color: var(--gold); }
+        .spirit-section .section-label::before { background: var(--gold); }
+        .spirit-section .section-intro { color: rgba(240, 230, 214, 0.75); }
+
+        .spirit-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 48px;
+            align-items: center;
+            margin-bottom: 56px;
+        }
+
+        .spirit-quote {
+            border-left: 3px solid var(--gold);
+            padding: 8px 0 8px 28px;
+            font-size: 1.02rem;
+            line-height: 2.1;
+            color: rgba(251, 247, 240, 0.92);
+        }
+
+        .spirit-quote .source {
+            display: block;
+            margin-top: 12px;
+            font-size: 0.8rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .spirit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2px;
+            background: rgba(201, 162, 75, 0.18);
+            border: 1px solid rgba(201, 162, 75, 0.2);
+        }
+
+        .spirit-card {
+            background: rgba(122, 14, 14, 0.75);
+            padding: 36px 28px;
+            transition: background 0.3s;
+        }
+
+        .spirit-card:hover { background: rgba(150, 24, 24, 0.85); }
+
+        .spirit-card .char {
+            font-size: 2.2rem;
+            color: var(--gold);
+            letter-spacing: 8px;
+            margin-bottom: 14px;
+            font-weight: 700;
+        }
+
+        .spirit-card p {
+            font-size: 0.9rem;
+            color: rgba(240, 230, 214, 0.8);
+            line-height: 1.95;
+        }
+
+        .spirit-card .en {
+            display: block;
+            font-size: 0.68rem;
+            letter-spacing: 3px;
+            color: rgba(201, 162, 75, 0.55);
+            margin-top: 14px;
+            text-transform: uppercase;
+        }
+
+        /* ========== 故事的温度 ========== */
+        .stories-intro-img { margin-bottom: 48px; }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .story-card {
+            background: #fff;
+            border: 1px solid rgba(201, 162, 75, 0.25);
+            padding: 40px 32px 36px;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .story-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(122, 14, 14, 0.1);
+        }
+
+        .story-card::before {
+            content: "“";
+            position: absolute;
+            top: 16px;
+            left: 24px;
+            font-size: 4.5rem;
+            color: rgba(196, 58, 42, 0.1);
+            line-height: 1;
+            font-family: Georgia, serif;
+        }
+
+        .story-card h3 {
+            font-size: 1.2rem;
+            color: var(--red-deep);
+            letter-spacing: 3px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .story-card p {
+            font-size: 0.93rem;
+            color: #5a4a40;
+            line-height: 2;
+        }
+
+        .story-card .story-tag {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            color: var(--red-warm);
+            border: 1px solid rgba(196, 58, 42, 0.3);
+            padding: 3px 12px;
+            border-radius: 2px;
+        }
+
+        /* ========== 诗与远方 ========== */
+        .poetry-section {
+            background: linear-gradient(135deg, #f5eee3 0%, #fbf7f0 50%, #f2e8d8 100%);
+        }
+
+        .poetry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .poem-card {
+            background: #fff;
+            border-top: 4px solid var(--red-main);
+            padding: 36px 32px 32px;
+            box-shadow: 0 6px 24px rgba(122, 14, 14, 0.06);
+        }
+
+        .poem-card .poem-label {
+            font-size: 0.72rem;
+            letter-spacing: 4px;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .poem-card h3 {
+            font-size: 1.15rem;
+            color: var(--red-deep);
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px dashed rgba(201, 162, 75, 0.4);
+        }
+
+        .poem-card .poem-body {
+            font-size: 1rem;
+            line-height: 2.4;
+            color: #3a2a22;
+            letter-spacing: 2px;
+        }
+
+        .poem-card .poem-note {
+            margin-top: 18px;
+            font-size: 0.82rem;
+            color: var(--gray-warm);
+            line-height: 1.9;
+            padding-top: 14px;
+            border-top: 1px solid rgba(201, 162, 75, 0.18);
+        }
+
+        /* ========== 新的长征 ========== */
+        .new-long-march {
+            background:
+                linear-gradient(rgba(43, 30, 26, 0.92), rgba(43, 30, 26, 0.96)),
+                url('image/峭壁间的前行.jpg') center/cover no-repeat;
+            color: #f0e6d6;
+            text-align: center;
+            position: relative;
+        }
+
+        .new-long-march .section-title { color: var(--gold-light); }
+        .new-long-march .section-label { color: var(--gold); justify-content: center; }
+        .new-long-march .section-label::before { background: var(--gold); }
+        .new-long-march .section-intro {
+            color: rgba(240, 230, 214, 0.85);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .march-lines {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1px;
+            background: rgba(201, 162, 75, 0.25);
+            margin-top: 48px;
+            border: 1px solid rgba(201, 162, 75, 0.25);
+        }
+
+        .march-line {
+            background: rgba(43, 30, 26, 0.85);
+            padding: 36px 28px;
+            text-align: left;
+        }
+
+        .march-line .marker {
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .march-line p {
+            font-size: 0.92rem;
+            line-height: 2;
+            color: rgba(240, 230, 214, 0.85);
+        }
+
+        .bugle-img-box {
+            max-width: 800px;
+            margin: 56px auto 0;
+            border: 2px solid rgba(201, 162, 75, 0.5);
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+        }
+
+        /* ========== 页脚 ========== */
+        .site-footer {
+            background: var(--red-deep);
+            color: rgba(240, 230, 214, 0.55);
+            text-align: center;
+            padding: 48px 24px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            line-height: 2;
+            border-top: 2px solid var(--gold);
+        }
+
+        .site-footer .footer-star {
+            color: var(--gold);
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .site-footer a {
+            color: rgba(201, 162, 75, 0.7);
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(201, 162, 75, 0.4);
+        }
+
+        .site-footer a:hover { color: var(--gold-light); }
+
+        /* ========== 返回顶部 ========== */
+        .back-top {
+            position: fixed;
+            bottom: 32px;
+            right: 28px;
+            z-index: 900;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--red-main);
+            color: var(--gold-light);
+            border: 1px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.1rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s, background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 16px rgba(122, 14, 14, 0.3);
+        }
+
+        .back-top.visible { opacity: 1; pointer-events: auto; }
+        .back-top:hover { background: var(--red-warm); transform: translateY(-3px); }
+
+        /* ========== 响应式 ========== */
+        @media (max-width: 900px) {
+            .spirit-layout { grid-template-columns: 1fr; gap: 32px; }
+            .history-foot-img { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-inner { padding: 0 16px; }
+            .nav-brand { font-size: 0.9rem; letter-spacing: 1px; }
+            .nav-links a { padding: 8px 10px; font-size: 0.82rem; }
+            .section { padding: 64px 20px; }
+            .hero { padding: 100px 20px 60px; background-attachment: scroll; }
+            .hero-poem { padding: 20px 16px; font-size: 0.9rem; }
+            .hero-stats { gap: 20px 28px; }
+            .spirit-grid { grid-template-columns: 1fr 1fr; }
+            .timeline { padding-left: 28px; }
+            .tl-item::before { left: -23px; width: 10px; height: 10px; }
+            .story-card { padding: 32px 24px 28px; }
+        }
+
+        @media (max-width: 480px) {
+            .spirit-grid { grid-template-columns: 1fr; }
+            .hero h1 { letter-spacing: 3px; }
+            .nav-links a { padding: 7px 8px; font-size: 0.76rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== 顶部导航 ==================== -->
+<nav class="top-nav" id="topNav" aria-label="主导航">
+    <div class="nav-inner">
+        <a href="#hero" class="nav-brand">
+            <span class="star">★</span> 红飘带
+        </a>
+        <ul class="nav-links">
+            <li><a href="#history">历史回廊</a></li>
+            <li><a href="#spirit">精神内核</a></li>
+            <li><a href="#stories">故事的温度</a></li>
+            <li><a href="#poetry">诗与远方</a></li>
+            <li><a href="#new-march">新的长征</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ==================== 英雄区 ==================== -->
+<header class="hero" id="hero">
+    <div class="hero-content">
+        <span class="hero-eyebrow">1934 — 1936 · 纪念长征胜利90周年</span>
+        <h1>
+            <span class="accent">一条地球上的红飘带———长征</span>
+        </h1>
+        <div class="hero-poem">
+            <div class="poem-title">七律 · 长征 · 毛泽东</div>
+            红军不怕远征难，万水千山只等闲。<br>
+            五岭逶迤腾细浪，乌蒙磅礴走泥丸。<br>
+            金沙水拍云崖暖，大渡桥横铁索寒。<br>
+            更喜岷山千里雪，三军过后尽开颜。
+        </div>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <span class="num">二万五千里</span>
+                <span class="label">行程</span>
+            </div>
+            <div class="hero-stat">
+                <span class="num">368</span>
+                <span class="label">天</span>
+            </div>
+            <div class="hero-stat">
+                <span class="num">18</span>
+                <span class="label">座山脉</span>
+            </div>
+            <div class="hero-stat">
+                <span class="num">24</span>
+                <span class="label">条河流</span>
+            </div>
+            <div class="hero-stat">
+                <span class="num">11</span>
+                <span class="label">个省份</span>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-hint">向下阅读 ↓</div>
+</header>
+
+<!-- ==================== 历史回廊 ==================== -->
+<section class="section" id="history">
+    <div class="section-inner">
+        <span class="section-label">第一章 · 历史回廊</span>
+        <h2 class="section-title">那些改变中国命运的时刻</h2>
+        <p class="section-intro">
+            从于都河畔的夜渡，到会宁城下的会师；从湘江的血色浮桥，到遵义的彻夜灯火。长征不是一条直线，而是一道在绝境中反复折冲、最终劈开生路的闪电。
+        </p>
+
+        <!-- 图1：《雪岭上的行军队伍》 -->
+        <div class="img-frame history-top-img">
+            <img src="image/雪岭上的行军队伍.png" alt="雪岭上的行军队伍" class="img-responsive">
+            <div class="img-caption">《雪岭上的行军队伍》<span>一面暗红旗帜点在队伍之中，层叠雪峰隐入风雪与薄雾</span></div>
+        </div>
+
+        <div class="timeline">
+            <div class="tl-item">
+                <span class="tl-date">1934年10月</span>
+                <h3>于都河畔，战略转移</h3>
+                <p>中共中央、中革军委率中央红军主力8.6万余人，从江西于都出发，踏上未知的远征。彼时没有人知道，这条路的终点在二万五千里之外，更没有人知道，它将通往一个新中国的黎明。</p>
+            </div>
+            <div class="tl-item">
+                <span class="tl-date">1934年11月—12月</span>
+                <h3>湘江战役：最惨烈的淬火</h3>
+                <p>中央红军连续突破四道封锁线，在湘江之畔遭遇长征以来最惨重的损失。渡过湘江后，部队从出发时的<span class="tl-highlight">8.6万余人锐减至3万余人</span>。当地民谣“三年不饮湘江水，十年不食湘江鱼”，是血与火最沉痛的注脚。</p>
+            </div>
+            <div class="tl-item">
+                <span class="tl-date">1935年1月</span>
+                <h3>遵义会议：生死攸关的转折</h3>
+                <p>在红军第五次反“围剿”失败和长征初期严重受挫的历史关头，遵义会议事实上确立了毛泽东在党中央和红军的领导地位，在最危急的关头挽救了党、挽救了红军、挽救了中国革命。</p>
+            </div>
+            <div class="tl-item">
+                <span class="tl-date">1935年1月—5月</span>
+                <h3>四渡赤水，巧渡金沙</h3>
+                <p>四渡赤水、南渡乌江、佯攻贵阳、威逼昆明、巧渡金沙江——红军在数十万敌军的围追堵截中穿插迂回，以运动战的极致艺术摆脱了重围，随后强渡大渡河、飞夺泸定桥，继续北上。</p>
+            </div>
+            <div class="tl-item">
+                <span class="tl-date">1936年10月</span>
+                <h3>会宁、将台堡：三军大会师</h3>
+                <p>红一、红二、红四方面军在甘肃会宁和将台堡胜利会师，长征宣告胜利结束。这条跨越十一省、翻越十八座山脉、渡过二十四条河流的红飘带，终于系成了一个改变中国命运的死结。</p>
+            </div>
+        </div>
+
+        <!-- 图2：《泥泞中的一步》 -->
+        <div class="img-frame history-foot-img">
+            <img src="image/泥泞中的一步.png" alt="泥泞中的一步" class="img-responsive" style="height: 100%;">
+            <div style="display: flex; flex-direction: column; justify-content: center; padding: 24px; background: #fff;">
+                <h4 style="color: var(--red-deep); letter-spacing: 2px; margin-bottom: 12px;">《泥泞中的一步》</h4>
+                <p style="font-size: 0.92rem; color: #5a4a40; line-height: 2;">后人常常惊叹于长征的宏大与奇迹，却容易忘记，这二万五千里的每一步，都是由这些穿着破烂草鞋、裹着泥浆的双脚，在深山峡谷与雪山草地中生生蹚出来的。深润泥土的细节，细腻的胶片质感，用局部动作呈现跋涉的重量。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== 精神内核 ==================== -->
+<section class="section spirit-section" id="spirit">
+    <div class="section-inner">
+        <span class="section-label">第二章 · 精神内核</span>
+        <h2 class="section-title">伟大长征精神，究竟是什么</h2>
+        
+        <div class="spirit-layout">
+            <!-- 图3：《山路上的回望》 -->
+            <div>
+                <div class="img-frame" style="background: transparent; border-color: rgba(201, 162, 75, 0.5);">
+                    <img src="image/山路上的回望.png" alt="山路上的回望" class="img-responsive">
+                    <div class="img-caption" style="color: rgba(232, 213, 168, 0.7);">《山路上的回望》<span style="color: rgba(232, 213, 168, 0.4);">疲惫却专注的神情，克制而苍茫的历史厚重感</span></div>
+                </div>
+            </div>
+            <div>
+                <blockquote class="spirit-quote">
+                    “伟大长征精神，就是把全国人民和中华民族的根本利益看得高于一切，坚定革命的理想和信念，坚信正义事业必然胜利的精神；就是为了救国救民，不怕任何艰难险阻，不惜付出一切牺牲的精神；就是坚持独立自主、实事求是，一切从实际出发的精神；就是顾全大局、严守纪律、紧密团结的精神；就是紧紧依靠人民群众，同人民群众生死相依、患难与共、艰苦奋斗的精神。”
+                    <span class="source">—— 习近平总书记论伟大长征精神</span>
+                </blockquote>
+            </div>
+        </div>
+
+        <div class="spirit-grid">
+            <div class="spirit-card">
+                <div class="char">忠诚</div>
+                <p>理想信念是中国共产党人的“魂”。长征之所以被称为“一次理想信念的伟大远征”，根本在于红军将士心中有信仰、脚下有力量。</p>
+                <span class="en">Loyalty</span>
+            </div>
+            <div class="spirit-card">
+                <div class="char">真理</div>
+                <p>遵义会议之所以成为转折点，正在于党开始独立自主地、实事求是地解决自己的问题。真理的力量，源于一切从实际出发的科学态度。</p>
+                <span class="en">Truth</span>
+            </div>
+            <div class="spirit-card">
+                <div class="char">正义</div>
+                <p>长征是为民族独立和人民解放而进行的正义事业。正义的事业经得起历史和人民的检验，能在绝境中汇聚起不可战胜的力量。</p>
+                <span class="en">Justice</span>
+            </div>
+            <div class="spirit-card">
+                <div class="char">团结</div>
+                <p>各路红军在战略上相互策应、战役上紧密配合，顾全大局、严守纪律。团结的力量，植根于“为了千千万万劳苦大众”的共同信念。</p>
+                <span class="en">Unity</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== 故事的温度 ==================== -->
+<section class="section" id="stories">
+    <div class="section-inner">
+        <span class="section-label">第三章 · 故事的温度</span>
+        <h2 class="section-title">宏大历史里，那些具体的人</h2>
+        <p class="section-intro">
+            长征的壮阔，不只写在战役地图和会议记录里，更写在一床被剪开的被子、一枚弯成的鱼钩、一件让出去的棉衣里。正是这些微小的选择，让“精神”二字有了体温。
+        </p>
+
+        <!-- 图4：《山脊上的相扶》 -->
+        <div class="img-frame stories-intro-img">
+            <img src="image/山脊上的相扶.png" alt="山脊上的相扶" class="img-responsive">
+            <div class="img-caption">《山脊上的相扶》</div>
+        </div>
+
+        <div class="story-grid">
+            <article class="story-card">
+                <h3>半条被子</h3>
+                <p>三名女红军借宿在湖南汝城村民徐解秀家中。临走时，她们把自己仅有的一床被子剪下一半，留给这位素不相识的乡亲。什么是共产党？共产党就是自己有一条被子，也要剪下半条给老百姓的人。</p>
+                <span class="story-tag">军民鱼水</span>
+            </article>
+
+            <article class="story-card">
+                <h3>金色的鱼钩</h3>
+                <p>过草地时，炊事班老班长奉命照顾三位生病的战士。断粮的日子里，他把一根针弯成鱼钩，钓来的鱼全部煮汤留给战友，自己却嚼着草根和剩下的鱼骨头。那枚锈迹斑斑的鱼钩，托举的是生死之间最重的“让”。</p>
+                <span class="story-tag">舍己为人</span>
+            </article>
+
+            <article class="story-card">
+                <h3>晶莹的丰碑</h3>
+                <p>雪山上，军需处长把棉衣一件件分给了战友，自己只穿着单薄的旧衣，在风雪中化作了一座“晶莹的丰碑”。他掌管着全军的物资，却把最后一点温暖留给了别人，把寒冷留给了自己。</p>
+                <span class="story-tag">无私无畏</span>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== 诗与远方 ==================== -->
+<section class="section poetry-section" id="poetry">
+    <div class="section-inner">
+        <span class="section-label">第四章 · 诗与远方</span>
+        <h2 class="section-title">枪林弹雨中的诗意与胸襟</h2>
+        <p class="section-intro">
+            长征途中，毛泽东在马背上、在窑洞里、在翻越山岭的间隙，写下了多首诗词。它们是“诗史合一”的典范——既是文学的巅峰，也是一支军队精神海拔的刻度。
+        </p>
+
+        <div class="poetry-grid">
+            <div class="poem-card">
+                <div class="poem-label">1935年10月 · 翻越六盘山</div>
+                <h3>清平乐 · 六盘山</h3>
+                <div class="poem-body">
+                    天高云淡，望断南飞雁。<br>
+                    不到长城非好汉，屈指行程二万。<br>
+                    六盘山上高峰，红旗漫卷西风。<br>
+                    今日长缨在手，何时缚住苍龙？
+                </div>
+                <div class="poem-note">长征即将走向终点，而“缚住苍龙”的宏愿才刚刚展开。这座山，是地理的高点，更是信念的高点。</div>
+            </div>
+
+            <div class="poem-card">
+                <div class="poem-label">1935年2月 · 娄山关大捷后</div>
+                <h3>忆秦娥 · 娄山关</h3>
+                <div class="poem-body">
+                    西风烈，长空雁叫霜晨月。<br>
+                    霜晨月，马蹄声碎，喇叭声咽。<br>
+                    雄关漫道真如铁，而今迈步从头越。<br>
+                    从头越，苍山如海，残阳如血。
+                </div>
+                <div class="poem-note">“真如铁”的雄关，在“从头越”的脚步面前，也不过是一道需要被跨过的门槛。这是长征精神最凝练的诗意表达。</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== 新的长征 (背景图：《峭壁间的前行》) ==================== -->
+<section class="section new-long-march" id="new-march">
+    <div class="section-inner">
+        <span class="section-label">第五章 · 新的长征</span>
+        <h2 class="section-title">长征从未远去，路仍在延伸</h2>
+        <p class="section-intro">
+            “长征的历史从未远去，长征的路在不断延伸。”每一代人都有属于自己的“雪山”和“草地”，都有需要闯过的“娄山关”和“腊子口”。
+        </p>
+
+        <div class="march-lines">
+            <div class="march-line">
+                <div class="marker">信念</div>
+                <p>把今天的难题当作当年的“娄山关”，把眼前的挑战视作自己的“腊子口”。信念不是抽象的，它就在每一次选择不放弃的瞬间。</p>
+            </div>
+            <div class="march-line">
+                <div class="marker">人民</div>
+                <p>“半条被子”的逻辑从未过时：把人民放在心中最高的位置，才能获得最深厚的力量。无论走多远，这条初心之路不能偏。</p>
+            </div>
+            <div class="march-line">
+                <div class="marker">实干</div>
+                <p>长征是走出来的，不是喊出来的。实事求是、独立自主、脚踏实地——这些从血与火中淬炼出的方法，仍然是今天最可靠的方法。</p>
+            </div>
+            <div class="march-line">
+                <div class="marker">远征</div>
+                <p>推进中国式现代化，其开创性、艰巨性、复杂性，丝毫不亚于当年的万里长征。越是艰难险阻，越需要从长征精神中汲取闯关夺隘的力量。</p>
+            </div>
+        </div>
+
+        <!-- 图5：《暮色中的军号》 -->
+        <div class="bugle-img-box">
+            <img src="image/暮色中的军号.png" alt="暮色中的军号" class="img-responsive">
+            <p style="margin-top: 16px; font-size: 0.95rem; letter-spacing: 2px; color: var(--gold-light);">
+                《暮色中的军号》<br>
+                <span style="font-size: 0.85rem; color: rgba(240, 230, 214, 0.6); font-weight: 400;">远处晚霞呈暖金色，号角已经吹响，新的长征在路上。</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== 页脚 ==================== -->
+<footer class="site-footer">
+    <span class="footer-star">★</span>
+    长征：一条地球上的红飘带 · 纪念中国工农红军长征胜利90周年<br>
+    本站为红色文化学习与纪念专题页面 · 内容综合自权威党史文献与公开资料<br>
+    <a href="#hero">返回顶部</a>
+</footer>
+
+<!-- ==================== 返回顶部按钮 ==================== -->
+<a href="#hero" class="back-top" id="backTop" aria-label="返回顶部">↑</a>
+
+<script>
+    // 导航栏滚动阴影
+    const nav = document.getElementById('topNav');
+    const backTop = document.getElementById('backTop');
+
+    window.addEventListener('scroll', function () {
+        const y = window.scrollY;
+        if (y > 40) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+        if (y > 600) {
+            backTop.classList.add('visible');
+        } else {
+            backTop.classList.remove('visible');
+        }
+    });
+
+    // 平滑锚点跳转
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
